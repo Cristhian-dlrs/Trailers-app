@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TrailersApp.Application.DTOs.Trailer;
@@ -55,6 +56,7 @@ namespace TrailersApp.Api.Controllers
         /// </summary>
         /// <param name="trailerDto">Trailer data.</param>
         /// <returns>New trailer record with its id if success.</returns>
+        [Authorize]
         [HttpPost(Name = nameof(CreateTrailer))]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TrailerDto))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -70,6 +72,7 @@ namespace TrailersApp.Api.Controllers
         /// </summary>
         /// <param name="trailerDto">New trailer data.</param>
         /// <returns>Status code 200 if success.</returns>
+        [Authorize]
         [HttpPut(Name = nameof(UpdateTrailer))]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -84,6 +87,7 @@ namespace TrailersApp.Api.Controllers
         /// </summary>
         /// <param name="id">The trailer id to delete.</param>
         /// <returns>Status code 200 if success.</returns>
+        [Authorize]
         [HttpDelete("{id:int}", Name = nameof(DeleteTrailer))]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
