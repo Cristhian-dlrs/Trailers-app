@@ -24,7 +24,7 @@ namespace TrailersApp.Api.Controllers
         /// </summary>
         /// <param name="filters">Filters to apply.</param>
         /// <returns>Collection of TrailersListDto.</returns>
-        [HttpGet(Name = nameof(GetAllTrailers))]
+        [HttpGet("getall")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<TrailersListDto>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<TrailersListDto>>> GetAllTrailers(
@@ -40,7 +40,7 @@ namespace TrailersApp.Api.Controllers
         /// </summary>
         /// <param name="id"> id of the trailer to retreive.</param>
         /// <returns>TrailerDto</returns>
-        [HttpGet("{id:int}", Name = nameof(GetTrailer))]
+        [HttpGet("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TrailerDto))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<TrailerDto>> GetTrailer(int id)

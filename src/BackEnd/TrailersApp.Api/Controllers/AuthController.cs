@@ -23,7 +23,7 @@ namespace TrailersApp.Api.Controllers
         /// </summary>
         /// <param name="userLoginDto">Login credentials.</param>
         /// <returns>Bearer token with user data</returns>
-        [HttpPost]
+        [HttpPost("login")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Authentication(UserLoginDto userLoginDto)
