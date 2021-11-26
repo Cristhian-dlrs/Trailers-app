@@ -4,9 +4,8 @@
 
 namespace TrailersApp.Core.Entities
 {
-    public class Trailer
+    public class Trailer : BaseEntity
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string CoverSrc { get; set; }
         public DateTime ReleaseYear { get; set; }
