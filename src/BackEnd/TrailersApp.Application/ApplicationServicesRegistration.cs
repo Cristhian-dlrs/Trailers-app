@@ -1,3 +1,4 @@
+using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +18,7 @@ namespace TrailersApp.Application
             services.AddDbContext<TrailersDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("Trailers_db")));
 
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<ITrailserService, TrailserService>();

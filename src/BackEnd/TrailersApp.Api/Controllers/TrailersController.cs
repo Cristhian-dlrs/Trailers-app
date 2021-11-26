@@ -40,10 +40,10 @@ namespace TrailersApp.Api.Controllers
         /// </summary>
         /// <param name="id"> id of the trailer to retreive.</param>
         /// <returns>TrailerDto</returns>
-        [HttpGet("{id:int}", Name = nameof(GetTrailers))]
+        [HttpGet("{id:int}", Name = nameof(GetTrailer))]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TrailerDto))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<TrailerDto>> GetTrailers(int id)
+        public async Task<ActionResult<TrailerDto>> GetTrailer(int id)
         {
             var result = await _trailserService.GetTrailer(id);
 
@@ -84,7 +84,7 @@ namespace TrailersApp.Api.Controllers
         /// </summary>
         /// <param name="id">The trailer id to delete.</param>
         /// <returns>Status code 200 if success.</returns>
-        [HttpDelete("{id:int}", Name = nameof(CreateTrailer))]
+        [HttpDelete("{id:int}", Name = nameof(DeleteTrailer))]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> DeleteTrailer([FromBody] int id)

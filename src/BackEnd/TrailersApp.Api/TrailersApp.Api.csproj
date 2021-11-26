@@ -14,4 +14,8 @@
       <ProjectReference Include="..\TrailersApp.Core\TrailersApp.Core.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Images" />
+    </ItemGroup>
+
 </Project>
