@@ -11,25 +11,21 @@ namespace TrailersApp.Application.DTOs.Trailer.Validators
                 .NotNull().WithMessage("{PropertyName} is required.");
 
             RuleFor(x => x.ReleaseYear)
-                .NotNull().WithMessage("{PropertyName} is required.")
-                .MaximumLength(4)
-                .WithMessage("{PropertyName} must be less than 4 characters long.")
-                .Must((data, token) =>
-                {
-                    var isValid = int.TryParse(data.ReleaseYear, out var value);
-                    return isValid && value <= DateTime.Now.Year;
-                })
-                .WithMessage("{PropertyName} is invalid.");
-            
+                .LessThan(DateTime.Now)
+                .WithMessage("{PropertyName}must be after {ComparisonValue}.");
+
             RuleFor(x => x.Duration)
+                .GreaterThan(0)
+                .WithMessage("{PropertyName} must be greater than {ComparisonValue}.")
+                .LessThanOrEqualTo(300)
+                .WithMessage("{PropertyName} must be less than {ComparisonValue} minutes long.");
+
+            RuleFor(x => x.Category)
                 .NotNull().WithMessage("{PropertyName} is required.")
-                .MaximumLength(10)
-                .WithMessage("{PropertyName} must be less than 10 characters long.");
+                .MaximumLength(25)
+                .WithMessage("{PropertyName} must be less than 4 characters long.");
             
-            RuleFor(x => x.Catetgory)
-                .NotNull().WithMessage("{PropertyName} is required.");
-            
-            RuleFor(x => x.Descrioption)
+            RuleFor(x => x.Description)
                 .NotNull().WithMessage("{PropertyName} is required.")
                 .MaximumLength(250)
                 .WithMessage("{PropertyName} must be less than 250 characters long.");

@@ -53,7 +53,7 @@ namespace TrailersApp.Application.Services
             trailer.CoverSrc = _image.GetImgSrc(newTrailerDto.Image, "trailers");
             await _trailerRepo.Add(trailer);
 
-            var result = _mapper.Map<TrailerDto>(newTrailerDto);
+            var result = _mapper.Map<TrailerDto>(trailer);
             return result;
         }
         

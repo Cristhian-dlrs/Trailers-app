@@ -15,7 +15,7 @@ namespace TrailersApp.Application
         public static IServiceCollection AddApplicationServices(
             this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<TrailersDbContext>(options =>
+            services.AddDbContext<Trailers_dbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("Trailers_db")));
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly());

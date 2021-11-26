@@ -8,6 +8,27 @@ namespace TrailersApp.Application.Data.DataContext.Configurations
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
+            builder.ToTable("users");
+            
+            builder.HasKey(x => x.Id);
+
+            builder.Property(e => e.Id).HasColumnName("id");
+
+            builder.Property(e => e.Email)
+                .IsRequired()
+                .HasMaxLength(50)
+                .IsUnicode(false);
+
+            builder.Property(e => e.Name)
+                .IsRequired()
+                .HasMaxLength(50)
+                .IsUnicode(false);
+
+            builder.Property(e => e.Password)
+                .IsRequired()
+                .HasMaxLength(25)
+                .IsUnicode(false);
+            
             builder.HasData(
                 new User
                 {

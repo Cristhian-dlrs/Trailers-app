@@ -9,10 +9,10 @@ namespace TrailersApp.Application.Data.Repositories
 {
     public class GenericRepository <T> : IGenericRepository<T> where T : BaseEntity
     {
-        private readonly TrailersDbContext _dbContext;
+        private readonly Trailers_dbContext _dbContext;
         private DbSet<T> _db;
 
-        public GenericRepository(TrailersDbContext dbContext)
+        public GenericRepository(Trailers_dbContext dbContext)
         {
             _dbContext = dbContext;
             _db = _dbContext.Set<T>();

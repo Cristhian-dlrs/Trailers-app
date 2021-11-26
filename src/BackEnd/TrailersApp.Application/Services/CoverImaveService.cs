@@ -29,8 +29,8 @@ namespace TrailersApp.Application.Services
             string imageName = new String(Path.GetFileNameWithoutExtension(imageFile.FileName)
                 .Take(10).ToArray()).Replace(' ', '-');
             imageName = imageName + DateTime.Now.ToString("yymmssfff") + Path.GetExtension(imageFile.FileName);
-            
             var imageFullPath = Path.Combine(_env.ContentRootPath,"Images/" + dir, imageName);
+            
             using (var fileStream = new FileStream(imageFullPath, FileMode.Create))
             {
                 var task = Task.Run(() => imageFile.CopyTo(fileStream));

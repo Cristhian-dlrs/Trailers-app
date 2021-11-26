@@ -1,25 +1,12 @@
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentValidation.AspNetCore;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using TrailersApp.Api.Extensions;
 using TrailersApp.Application;
-using TrailersApp.Application.Filters;
 
 namespace TrailersApp.Api
 {
@@ -45,6 +32,14 @@ namespace TrailersApp.Api
                 c.SwaggerDoc("v1",
                     new OpenApiInfo { Title = "TrailersApp.Api", Version = "v1" });
             });
+            
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,11 +57,7 @@ namespace TrailersApp.Api
 
             app.UseHttpsRedirection();
             
-            app.UseCors(options => options
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .SetIsOriginAllowed(origin => true) 
-                .AllowCredentials()); 
+            app.UseCors("CorsPolicy"); 
 
             app.UseRouting();
 

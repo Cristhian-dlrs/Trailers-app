@@ -1,15 +1,18 @@
-using TrailersApp.Core.Enums;
+﻿using System;
+
+#nullable disable
 
 namespace TrailersApp.Core.Entities
 {
-    public class Trailer : BaseEntity
+    public class Trailer
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string CoverSrc { get; set; }
-        public string ReleaseYear { get; set; }
-        public string Duration { get; set; }
-        public Category Catetgory { get; set; }
-        public string Descrioption { get; set; }
+        public DateTime ReleaseYear { get; set; }
+        public int Duration { get; set; }
+        public string Category { get; set; }
+        public string Description { get; set; }
         public string Url { get; set; }
     }
 }
