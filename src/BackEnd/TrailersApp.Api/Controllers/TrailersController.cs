@@ -44,7 +44,7 @@ namespace TrailersApp.Api.Controllers
         [HttpGet("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TrailerDto))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<TrailerDto>> GetTrailer(int id)
+        public async Task<ActionResult<TrailerDto>> GetTrailer([FromQuery] int id)
         {
             var result = await _trailserService.GetTrailer(id);
 
@@ -91,7 +91,7 @@ namespace TrailersApp.Api.Controllers
         [HttpDelete("{id:int}", Name = nameof(DeleteTrailer))]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult> DeleteTrailer([FromBody] int id)
+        public async Task<ActionResult> DeleteTrailer([FromQuery]int id)
         {
             await _trailserService.DeleteTrailer(id);
             return Ok();
